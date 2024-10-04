@@ -6,15 +6,42 @@ const caixaResultado = document.querySelector('.caixa-resultado');
 const perguntas = [
     {
         enunciado: "Você se interessa por Inteligência Artifical?",
-        alternativas: ["Sim", "Não"]
+        alternativas: [
+            {
+                texto: "Sim",
+                afirmativa: "Afirmativa da alternativa 1"
+            },
+            {
+                texto: "Não",
+                afirmativa: "Afirmativa da alternativa 2"
+            }
+        ]
     },
     {
         enunciado: "Você acha que o futuro vai ser repleto por IAs?",
-        alternativas: ["Sim", "Não"]
+        alternativas: [
+            {
+                texto: "Sim",
+                afirmativa: "Afirmativa da alternativa 1"
+            },
+            {
+                texto: "Não",
+                afirmativa: "Afirmativa da alternativa 2"
+            }
+        ]
     },
     {
         enunciado: "Você acha que as IAs irão tomar o lugar dos humanos?",
-        alternativas: ["Sim", "Não"]
+        alternativas: [
+            {
+                texto: "Sim",
+                afirmativa: "Afirmativa da alternativa 1"
+            },
+            {
+                texto: "Não",
+                afirmativa: "Afirmativa da alternativa 2"
+            }
+        ]
     }
 ]
 
@@ -26,13 +53,22 @@ function mostraPergunta() {
     caixaPergunta.textContent = perguntaAtual.enunciado;
     mostraAlternativas();
 }
-
 function mostraAlternativas() {
-    for (const alternativa of perguntaAtual.alternativa) {
+    for (const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
-        botaoAlternativas.textContent = alternativa;
-        caixaAlternativa.appendChild(botaoAlternativas);
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa)) {
+            caixaAlternativa.appendChild(botaoAlternativas);
+        };
     }
+}
+
+function respostaSelecionada(opcaoSelecionada) {
+    const afirmacoes = opcaoSelecionada.afirmativa;
+    respostas = afirmacoes;
+    posicao++;
+    mostraPergunta();
+
 }
 
 mostraPergunta();
