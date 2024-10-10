@@ -2,6 +2,7 @@ const caixaPrincipal = document.querySelector('.caixa-principal');
 const caixaPergunta = document.querySelector('.caixa-pergunta');
 const caixaAlternativa = document.querySelector('.caixa-alternativa');
 const caixaResultado = document.querySelector('.caixa-resultado');
+const textoResultado = document.querySelector('.texto-resultado');
 
 const perguntas = [
     {
@@ -49,8 +50,13 @@ let posicao = 0;
 let perguntaAtual;
 
 function mostraPergunta() {
+    if (posicao >= perguntas.length) {
+        mostraResultado();
+        return;
+    }
     perguntaAtual = perguntas[posicao];
     caixaPergunta.textContent = perguntaAtual.enunciado;
+    caixaAlternativa.textContent = " ";
     mostraAlternativas();
 }
 function mostraAlternativas() {
@@ -70,5 +76,12 @@ function respostaSelecionada(opcaoSelecionada) {
     mostraPergunta();
 
 }
+
+function mostraResultado() {
+    caixaPergunta.textContent = "Em 25 anos...";
+    textoResultado.textContent = respostas;
+    caixaAlternativa.textContent = "";
+}
+
 
 mostraPergunta();
