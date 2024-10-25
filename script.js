@@ -10,11 +10,11 @@ const perguntas = [
         alternativas: [
             {
                 texto: "Sim",
-                afirmativa: "Afirmativa da alternativa 1"
+                afirmativa: "Se Interessa por Inteligência Artifical"
             },
             {
                 texto: "Não",
-                afirmativa: "Afirmativa da alternativa 2"
+                afirmativa: "Não se Interessa por Inteligência Artifical"
             }
         ]
     },
@@ -23,11 +23,11 @@ const perguntas = [
         alternativas: [
             {
                 texto: "Sim",
-                afirmativa: "Afirmativa da alternativa 1"
+                afirmativa: "O Futuro vai ser Repleto por IAs"
             },
             {
                 texto: "Não",
-                afirmativa: "Afirmativa da alternativa 2"
+                afirmativa: "O Futuro não vai ser Repleto por IAs"
             }
         ]
     },
@@ -36,11 +36,11 @@ const perguntas = [
         alternativas: [
             {
                 texto: "Sim",
-                afirmativa: "Afirmativa da alternativa 1"
+                afirmativa: "As IAs irão Tomar o Lugar dos Humanos"
             },
             {
                 texto: "Não",
-                afirmativa: "Afirmativa da alternativa 2"
+                afirmativa: "As IAs não irão Tomar o Lugar dos Humanos"
             }
         ]
     }
@@ -48,6 +48,7 @@ const perguntas = [
 
 let posicao = 0;
 let perguntaAtual;
+let respostas = "";
 
 function mostraPergunta() {
     if (posicao >= perguntas.length) {
@@ -63,15 +64,14 @@ function mostraAlternativas() {
     for (const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
-        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa)) {
-            caixaAlternativa.appendChild(botaoAlternativas);
-        };
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
+        caixaAlternativa.appendChild(botaoAlternativas);
     }
 }
 
 function respostaSelecionada(opcaoSelecionada) {
-    const afirmacoes = opcaoSelecionada.afirmativa;
-    respostas = afirmacoes;
+    const afirmacoes = opcaoSelecionada.afirmacao;
+    respostas += afirmacoes + " ";
     posicao++;
     mostraPergunta();
 
